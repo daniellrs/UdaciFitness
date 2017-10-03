@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
+import { purple } from '../utils/colors'
 
 class DateHeader extends Component {
-  render() {
+  render( ) {
     const { date } = this.props;
 
     return (
-      <Text>{date}</Text>
+      <Text style={{
+        color: purple,
+        fontSize: 25
+      }}>{date}</Text>
     );
   }
 }
