@@ -24,8 +24,9 @@ class History extends Component {
           [timeToString( )]: getDailyReminderValue( )
         }))
       }
-    }).then(( ) => this.setState(( ) => ({ ready: true }))).then(( ) => this.setState( ready : true ));
+    }).then(( ) => this.setState(( ) => ({ ready: true })));
   }
+
   renderItem = ( {
     today,
     ...metrics
@@ -33,16 +34,17 @@ class History extends Component {
     <View style={styles.item}>
       {today
         ? <View>
-            <DateHeader date={formattedDate}/>
-            <Text style={styles.noDataText}>
-              {today}
-            </Text>
-          </View>
-        : <TouchableOpacity onPress={( ) => console.log( 'Pressed!' )}>
+          <DateHeader date={formattedDate}/>
+          <Text style={styles.noDataText}>
+            {today}
+          </Text>
+        </View>
+        : <TouchableOpacity onPress={( ) => this.props.navigation.navigate('EntryDetail', { entryId: key })}>
           <MetricCard metrics={metrics} date={formattedDate}/>
         </TouchableOpacity>}
     </View>
   )
+
   renderEmptyDate( formattedDate ) {
     return (
       <View style={styles.item}>
